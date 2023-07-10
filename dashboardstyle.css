@@ -1,0 +1,37 @@
+.headings{
+    margin-left: 20%;
+    color: #717171;
+}
+
+#daily{
+margin-left: 20%
+}
+
+#total{
+    margin-left: 20%
+    }
+
+#weekly,#monthly,#annualy{
+    margin-left: 8%
+    }
+
+    #healthy,#sick,#pregnant{
+        margin-left: 8%
+        }
+
+.mproduction{
+    display: inline-block;
+    width: 150px;
+    height: 75px;
+    background-color: #717171;
+    border-radius: 1px solid black ;
+}
+
+span{
+    text-align:center;
+  }
+.div1{
+    background-color: lightgreen; 
+    display:inline-block;
+    margin-left:20%;
+}
