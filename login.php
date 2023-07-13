@@ -16,7 +16,10 @@
 	   if($recordsFound == 1)
 	   {
 		$row = mysqli_fetch_assoc($result); 
-		//$_SESSION['admin_name']=$uname;
+		
+       // Start the session
+        //session_start();
+		//$_SESSION["admin"]=$uname;
 		header('Location: dashboard.php');
 	   }
 	   else {
