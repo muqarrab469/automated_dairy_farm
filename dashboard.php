@@ -1,4 +1,10 @@
-<?php require('conn.php'); ?>
+<?php
+//if ((!isset($_SESSION)) || (!isset($_SESSION["admin"]))) 
+//{
+  //header("Location: login.php");
+//}
+
+require('conn.php'); ?>
 
 <?php
     $date = "2023-07-03";
@@ -159,7 +165,7 @@
 <h1 class="headings">Cows List</h1>
 
     <?php
-    $error="";
+    $error=""; 
     $sql = "SELECT id, breed, price, temperature,status,milk,mtemp,mgroup FROM animal";
     $result = mysqli_query($conn, $sql);
 

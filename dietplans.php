@@ -1,3 +1,10 @@
+<?php
+//if ((!isset($_SESSION)) || (!isset($_SESSION['admin']))) 
+//{
+  //header("Location: login.php");
+//}
+?>
+
 <?php require('conn.php'); ?>
 <?php
 $error = "";
@@ -9,15 +16,26 @@ if(isset($_REQUEST["addDietPlan"])){
   $sdate = $_REQUEST["start"];
   $edate = $_REQUEST["end"];
 
-  $sql = "INSERT INTO dietplans (a_id, diet_plan, s_date, e_date) 
-                       VALUES ('$id', '$dietplan', '$sdate', '$edate')";
-  if ($conn->query($sql) === TRUE) {
-     $message = "Diet Plan Added Successfully!";
+  $sql = "SELECT* FROM dietplans where a_id='$id'";
+  $result = mysqli_query($conn, $sql);
+
+  if (mysqli_num_rows($result) > 0) {
+  $sql1 = "UPDATE dietplans SET diet_plan = '$dietplan', s_date = '$sdate', e_date = '$edate' WHERE a_id = $id";
+  if ($conn->query($sql1) === TRUE) {
+    $message = "Prevoius Diet Plan Updated Successfully!";
+  } else {
+    $error = "Error In Updating Diet Plan!";
   }
-  else {
-   $error = "Error In Adding Diet Plan!";
-   }
+}
+  else{
+  $sql2 = "INSERT INTO dietplans (a_id, diet_plan, s_date, e_date) VALUES ('$id', '$dietplan', '$sdate', '$edate')";
+  if ($conn->query($sql2) === TRUE) {
+  $message = "Diet Plan Added Successfully!";}
+  else{
+    $error = "Error In Adding Diet Plan!";
   }
+  }
+}
 ?>
 
 <!DOCTYPE html>
@@ -59,7 +77,7 @@ if(isset($_REQUEST["addDietPlan"])){
     if (mysqli_num_rows($result1) > 0) {
     while($row = mysqli_fetch_assoc($result1)) {
     echo "<br><div style='background-color: lightgreen;width:40%;margin-left:20%' class=div1><h2>Animal ID: ".$row["a_id"]."</h2><br><h3>Diet Plan:</h3><h4>" .$row["diet_plan"]."</h4>";
-    echo "<form action='dietplans.php' method='POST'><input type='hidden' name='id_data' value='".$row['a_id']."'><button onclick='updateDietPlan(" . $row['a_id'] . ")'>Update</button><button onclick='deleteDietPlan(" . $row["a_id"] . ")'>Delete</button> </div><br><br>";
+    echo "<button onclick='updateDietPlan(" . $row['a_id'] . ")'>Update</button><button onclick='deleteDietPlan(" . $row["a_id"] . ")'>Delete</button> </div><br><br>";
   
   }
 } else {

@@ -1,3 +1,10 @@
+<?php
+//if ((!isset($_SESSION)) || (!isset($_SESSION['admin']))) 
+//{
+  //header("Location: login.php");
+//}
+?>
+
 <?php require('conn.php'); ?>
 
 <!DOCTYPE html>
@@ -15,9 +22,9 @@
 <br>
 
 <?php
-//if (isset($_GET['id'])) {
-  //$animalIdP = $_GET['id'];
-   $animalIdP="1";
+if (isset($_GET['id'])) {
+  $animalIdP = $_GET['id'];
+   
 
 
   $sql = "SELECT* FROM animal WHERE id = '$animalIdP'";
@@ -180,7 +187,7 @@
     </div>
     </div>
     <br><br><br>";
-  //}
+  }
     ?>
 
 <h1 class="headings">Chart</h1>

@@ -1,5 +1,11 @@
 <?php
-require('conn.php');
+//if ((!isset($_SESSION)) || (!isset($_SESSION['admin']))) 
+//{
+  //header("Location: login.php");
+//}
+?>
+
+<?php require('conn.php');
 
 $error = "";
 $message = "";
@@ -47,19 +53,19 @@ if(isset($_REQUEST["updateDietPlans"])){
            echo "<div id='container1'>
            <form action='update-dietplans.php' method='POST'>
            <h2>Update Diet plan</h2>
-           <input type='text' placeholder='Enter Animal ID' name='id' value=".$dietplan['a_id']" required/>
-           <input type='text' placeholder='Enter Diet Plan' name='dietplan' value=".$dietplan['diet_plan']" required/>
-           <input pattern='\d{4}-\d{2}-\d{2}' placeholder='Enter Start Date YYYY-MM-DD' name='start' value=".$dietplan['s_date']" required/>
-           <input pattern='\d{4}-\d{2}-\d{2}' placeholder='Enter End Date YYYY-MM-DD' name='end' value=".$dietplan['e_date']" required/>
+           <input type='text' placeholder='Enter Animal ID' name='id' value=".$dietplan['a_id']." required/>
+           <input type='text' placeholder='Enter Diet Plan' name='dietplan' value=".$dietplan['diet_plan']." required/>
+           <input pattern='\d{4}-\d{2}-\d{2}' placeholder='Enter Start Date YYYY-MM-DD' name='start' value=".$dietplan['s_date']." required/>
+           <input pattern='\d{4}-\d{2}-\d{2}' placeholder='Enter End Date YYYY-MM-DD' name='end' value=".$dietplan['e_date']." required/>
            <button name='updateDietPlans'>Update Diet Plan</button>
            <br>
-           <span style='color:red'>".$error."</span>
-           <span style='color:green'>".$message."</span>
            </form>
            </div>
            <br>";
         }
     }  
     ?>
+     <span style='margin-left:20%;'><?php echo $error ?></span>
+           <span style='margin-left:20%,color:green'><?php echo $message ?></span>
   </body>
 </html>

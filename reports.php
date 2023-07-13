@@ -1,3 +1,10 @@
+<?php
+//if ((!isset($_SESSION)) || (!isset($_SESSION['admin']))) 
+//{
+  //header("Location: login.php");
+//}
+?>
+
 <?php require('conn.php'); ?>
 
 <?php
